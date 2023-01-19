@@ -48,12 +48,7 @@ public class EcommerceTest implements IAbstractTest {
         homePage.open();
 
         SoftAssert sa = new SoftAssert();
-        List<CategorySection> classList = homePage.getCategorySectionList();
-        for (CategorySection cs : classList) {
-            cs.clickPinButton();
-            sa.assertTrue(cs.getHeadingWithoutPinClass());
-        }
-
+        homePage.getCategoryHeadingWithPinList().forEach(el -> Assert.assertTrue(el));
         sa.assertAll();
     }
 

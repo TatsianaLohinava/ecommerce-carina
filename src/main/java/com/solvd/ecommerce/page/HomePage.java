@@ -1,11 +1,11 @@
 package com.solvd.ecommerce.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.PageOpeningStrategy;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.solvd.ecommerce.component.CategorySection;
+import com.solvd.ecommerce.component.CategoryHeadingWithPin;
 import com.solvd.ecommerce.component.Header;
 import com.solvd.ecommerce.component.LoginBox;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,8 +23,8 @@ public class HomePage extends AbstractPage {
     @FindBy(css = ".main-nav__list__li.main-nav__list__li_wnav")
     private List<ExtendedWebElement> sidebarMenuList;
 
-    @FindBy(xpath = ".//*[contains(@id, 'category_goods_container')]")
-    private List<CategorySection> categorySection;
+    @FindBy(xpath = ".//*[contains(@class, 'b-main-pgs') and contains(@class, 'h-mpgs-grid-1') and not(contains(@class, 'mpgs-nopin'))]")
+    private List<CategoryHeadingWithPin> categoryHeadingWithPinList;
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
@@ -39,8 +39,13 @@ public class HomePage extends AbstractPage {
         return loginBox;
     }
 
-    public List<CategorySection> getCategorySectionList() {
-        return categorySection;
+    public List<Boolean> getCategoryHeadingWithPinList() {
+        List<Boolean> bool = new ArrayList<>();
+        for (CategoryHeadingWithPin cs : categoryHeadingWithPinList) {
+            cs.clickPinButton();
+            bool.add(cs.findExtendedWebElement(By.xpath("//*[contains(@class, 'mpgs-nopin')]")).isElementPresent());
+        }
+        return bool;
     }
 
     public List<String> getSideBarMenuElementAttributeOnHover() {
