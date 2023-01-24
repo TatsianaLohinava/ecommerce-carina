@@ -1,10 +1,10 @@
-package com.solvd.ecommerce.page;
+package com.solvd.ecommerce.web.page;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.solvd.ecommerce.component.CategoryHeadingWithPin;
-import com.solvd.ecommerce.component.Header;
-import com.solvd.ecommerce.component.LoginBox;
+import com.solvd.ecommerce.web.component.CategoryHeadingWithPin;
+import com.solvd.ecommerce.web.component.Header;
+import com.solvd.ecommerce.web.component.LoginBox;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

@@ -1,4 +1,4 @@
-package com.solvd.ecommerce.utils;
+package com.solvd.ecommerce.web.utils;
 
 import com.qaprosoft.carina.core.foundation.webdriver.core.capability.impl.desktop.ChromeCapabilities;
 import com.qaprosoft.carina.core.foundation.webdriver.core.capability.impl.desktop.FirefoxCapabilities;

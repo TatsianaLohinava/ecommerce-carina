@@ -1,9 +1,10 @@
 package com.solvd.ecommerce;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.solvd.ecommerce.component.*;
-import com.solvd.ecommerce.page.*;
-import com.solvd.ecommerce.utils.CapabilitiesFactory;
+import com.solvd.ecommerce.web.component.*;
+import com.solvd.ecommerce.web.page.HomePage;
+import com.solvd.ecommerce.web.page.ResultPage;
+import com.solvd.ecommerce.web.utils.CapabilitiesFactory;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -11,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class EcommerceTest implements IAbstractTest {
+public class EcommerceWebTest implements IAbstractTest {
 
     @Test
     @Parameters({"browser"})
