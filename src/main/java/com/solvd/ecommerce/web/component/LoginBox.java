@@ -1,4 +1,4 @@
-package com.solvd.ecommerce.component;
+package com.solvd.ecommerce.web.component;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;

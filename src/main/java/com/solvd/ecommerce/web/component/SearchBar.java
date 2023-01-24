@@ -1,8 +1,8 @@
-package com.solvd.ecommerce.component;
+package com.solvd.ecommerce.web.component;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.solvd.ecommerce.page.ResultPage;
+import com.solvd.ecommerce.web.page.ResultPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
