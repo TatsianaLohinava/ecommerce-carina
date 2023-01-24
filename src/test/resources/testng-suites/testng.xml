@@ -4,13 +4,13 @@
     <test name="EcommerceTests on Chrome" parallel="methods" thread-count="6">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.solvd.ecommerce.EcommerceTest" />
+            <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
     </test>
     <test name="EcommerceTests on FireFox" parallel="methods" thread-count="6">
         <parameter name="browser" value="firefox" />
         <classes>
-            <class name="com.solvd.ecommerce.EcommerceTest" />
+            <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
     </test>
 </suite>

@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class EcommerceTest implements IAbstractTest {
+public class EcommerceWebTest implements IAbstractTest {
 
     @Test
     @Parameters({"browser"})
