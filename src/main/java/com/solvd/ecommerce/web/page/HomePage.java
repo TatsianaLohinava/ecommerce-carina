@@ -28,7 +28,6 @@ public class HomePage extends AbstractPage {
 
     public HomePage(WebDriver webDriver) {
         super(webDriver);
-        setPageURL("");
     }
 
     public Header getHeader() {
