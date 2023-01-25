@@ -20,7 +20,7 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = ".//a[contains(@class, 'header__item') and contains(@class, 'header__item_toggle') and contains(@href, '#menu')]")
     private ExtendedWebElement menuButton;
 
-    @FindBy(xpath = ".//*[contains(@class, 'menu') and contains(@class, 'offcanvas') and contains(@class, 'offcanvas-end')]")
+    @FindBy(xpath = ".//*[@id='menu']")
     private ExtendedWebElement menuCard;
 
     @FindBy(xpath = ".//*[contains(@class, 'btn-close')]")
