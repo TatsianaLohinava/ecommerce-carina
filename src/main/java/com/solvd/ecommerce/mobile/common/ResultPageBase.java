@@ -1,9 +1,8 @@
 package com.solvd.ecommerce.mobile.common;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public abstract class ResultPageBase extends AbstractPage {
+public abstract class ResultPageBase extends BasePage {
 
     public ResultPageBase(WebDriver driver) {
         super(driver);
