@@ -17,6 +17,7 @@ public class LoginPage extends LoginPageBase {
         super(webDriver);
     }
 
+    @Override
     public LoginWithEmailPageBase openLoginWithEmailButton() {
         loginWithEmailFormButton.click();
         return initPage(getDriver(), LoginWithEmailPageBase.class);
