@@ -20,7 +20,7 @@ public class EcommerceAndroidTest implements IAbstractTest {
         homePage.openResultPageBase();
 
         ResultPage resultPage = new ResultPage(getDriver());
-        Assert.assertNotEquals(resultPage.getResultListSize(), 0);
+        Assert.assertNotEquals(resultPage.getResultListSize(), 0, "There are no query results on this page.");
         resultPage.printItemData();
     }
 
@@ -30,9 +30,9 @@ public class EcommerceAndroidTest implements IAbstractTest {
         homePage.open();
 
         homePage.clickMenuButton();
-        Assert.assertTrue(homePage.isMenuVisible());
+        Assert.assertTrue(homePage.isMenuVisible(), "Menu is not visible.");
         homePage.clickCloseMenuButton();
-        Assert.assertFalse(homePage.isMenuVisible());
+        Assert.assertFalse(homePage.isMenuVisible(), "Menu is visible.");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class EcommerceAndroidTest implements IAbstractTest {
         homePage.sendKeysToInput(query);
         homePage.clickResetButton();
 
-        Assert.assertTrue(homePage.isSearchInputEmpty());
+        Assert.assertTrue(homePage.isSearchInputEmpty(), "Input wasn't cleared.");
     }
 
     @Test
@@ -65,7 +65,7 @@ public class EcommerceAndroidTest implements IAbstractTest {
         filterPage.checkNewItemFilterBox();
         filterPage.clickFilterApplyButton();
 
-        Assert.assertEquals(resultPage.getNewLabelListSize(), resultPage.getResultListSize());
+        Assert.assertEquals(resultPage.getNewLabelListSize(), resultPage.getResultListSize(), "Quantity of the labels isn't equal to the quantity of items.");
     }
 
     @Test
@@ -82,7 +82,7 @@ public class EcommerceAndroidTest implements IAbstractTest {
         loginWithEmailPage.fillPasswordInput(R.TESTDATA.get("pass"));
         loginWithEmailPage.clickSubmitDataButton();
 
-        Assert.assertTrue(loginWithEmailPage.isWarningMessagePresent());
+        Assert.assertTrue(loginWithEmailPage.isWarningMessagePresent(), "Warning message is not shown.");
     }
 
 }
