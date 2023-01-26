@@ -39,12 +39,12 @@ public class HomePage extends AbstractPage {
     }
 
     public List<Boolean> getCategoryHeadingWithPinList() {
-        List<Boolean> bool = new ArrayList<>();
+        List<Boolean> isCategoryClassPresent = new ArrayList<>();
         for (CategoryHeadingWithPin cs : categoryHeadingWithPinList) {
             cs.clickPinButton();
-            bool.add(cs.findExtendedWebElement(By.xpath("//*[contains(@class, 'mpgs-nopin')]")).isElementPresent());
+            isCategoryClassPresent.add(cs.findExtendedWebElement(By.xpath("//*[contains(@class, 'mpgs-nopin')]")).isElementPresent());
         }
-        return bool;
+        return isCategoryClassPresent;
     }
 
     public List<String> getSideBarMenuElementAttributeOnHover() {

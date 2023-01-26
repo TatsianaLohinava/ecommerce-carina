@@ -4,7 +4,8 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.ecommerce.web.component.*;
 import com.solvd.ecommerce.web.page.HomePage;
 import com.solvd.ecommerce.web.page.ResultPage;
-import com.solvd.ecommerce.utils.CapabilitiesFactory;
+import com.solvd.ecommerce.web.utils.CapabilitiesFactory;
+
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -25,7 +26,7 @@ public class EcommerceWebTest implements IAbstractTest {
         SearchBar searchBar = header.getSearchBar();
         searchBar.searchInputEnter(query);
         ResultPage resultPage = searchBar.searchButtonClick();
-        Assert.assertNotEquals(resultPage.getResultListSize(), 0);
+        Assert.assertNotEquals(resultPage.getResultListSize(), 0, "There are no query results on this page.");
         resultPage.getResultTableElementList().forEach(ResultTableElement::printItemData);
     }
 
@@ -34,12 +35,12 @@ public class EcommerceWebTest implements IAbstractTest {
     public void checkBackgroundChangeTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
         homePage.open();
-        SoftAssert sa = new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();
         List<String> attributeList = homePage.getSideBarMenuElementAttributeOnHover();
         attributeList.forEach(el -> {
-            sa.assertTrue(el.contains("main-nav__list__li_wnav_active"));
+            softAssert.assertTrue(el.contains("main-nav__list__li_wnav_active"), "Some of the menu elements haven't changed appearance on hover.");
         });
-        sa.assertAll();
+        softAssert.assertAll();
     }
 
     @Test
@@ -48,9 +49,9 @@ public class EcommerceWebTest implements IAbstractTest {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
         homePage.open();
 
-        SoftAssert sa = new SoftAssert();
-        homePage.getCategoryHeadingWithPinList().forEach(el -> Assert.assertTrue(el));
-        sa.assertAll();
+        SoftAssert softAssert = new SoftAssert();
+        homePage.getCategoryHeadingWithPinList().forEach(el -> Assert.assertTrue(el, "Some category headings haven't changed the appearance."));
+        softAssert.assertAll();
     }
 
     @Test
@@ -64,7 +65,7 @@ public class EcommerceWebTest implements IAbstractTest {
         SearchBar searchBar = header.getSearchBar();
         searchBar.searchInputEnter(query);
         searchBar.clickResetButton();
-        Assert.assertTrue(searchBar.isSearchInputEmpty());
+        Assert.assertTrue(searchBar.isSearchInputEmpty(), "Input wasn't cleared.");
     }
 
     @Test
@@ -76,18 +77,18 @@ public class EcommerceWebTest implements IAbstractTest {
 
         Header header = homePage.getHeader();
         SearchBar searchBar = header.getSearchBar();
-        SoftAssert sa = new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();
 
         searchBar.searchInputEnter(query);
         ResultPage resultPage = searchBar.searchButtonClick();
 
-        boolean bool = resultPage.checkNewFilterBox();
-        Assert.assertTrue(bool);
-        if (bool) {
-            List<ResultTableElement> resultTableElementList = resultPage.getResultTableElementList();
-            resultTableElementList.forEach(el -> sa.assertTrue(el.checkNewItem()));
+        boolean isNewFilterChecked = resultPage.checkNewFilterBox();
 
-            sa.assertAll();
+        if (isNewFilterChecked) {
+            List<ResultTableElement> resultTableElementList = resultPage.getResultTableElementList();
+            resultTableElementList.forEach(el -> softAssert.assertTrue(el.checkNewItem(), "Some items do not contain the label"));
+
+            softAssert.assertAll();
         }
     }
 
@@ -104,7 +105,7 @@ public class EcommerceWebTest implements IAbstractTest {
         loginForm.fillEmailInput(R.TESTDATA.get("email"));
         loginForm.fillPasswordInput(R.TESTDATA.get("pass"));
         loginForm.clickLoginFormButton();
-        Assert.assertTrue(loginForm.isElementWithTextPresent(loginForm.getWarningMessage(), "Адрес электронной почты не зарегистрирован."));
+        Assert.assertTrue(loginForm.isWarningMessagePresent(), "Warning message is not shown.");
     }
 
 }

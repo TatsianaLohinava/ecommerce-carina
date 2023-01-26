@@ -36,8 +36,8 @@ public class LoginForm extends AbstractUIObject {
         loginFormButton.click();
     }
 
-    public ExtendedWebElement getWarningMessage() {
-        return warningMessage;
+    public boolean isWarningMessagePresent() {
+        return isElementWithTextPresent(warningMessage, "Адрес электронной почты не зарегистрирован");
     }
 
 }
