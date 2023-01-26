@@ -2,7 +2,7 @@ package com.solvd.ecommerce;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 
-import com.solvd.ecommerce.mobile.android.*;
+import com.solvd.ecommerce.mobile.common.*;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -11,22 +11,21 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
     @Test
     public void verifySearchResultTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         String query = "Ластик";
 
         homePage.focusOnInput();
         homePage.sendKeysToInput(query);
-        homePage.openResultPageBase();
+        ResultPageBase resultPage = homePage.openResultPageBase();
 
-        ResultPage resultPage = new ResultPage(getDriver());
         Assert.assertNotEquals(resultPage.getResultListSize(), 0, "There are no query results on this page.");
         resultPage.printItemData();
     }
 
     @Test
     public void checkMenuButtonTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
 
         homePage.clickMenuButton();
@@ -37,7 +36,7 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
     @Test
     public void checkInputResetTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         String query = "Ластик";
 
@@ -50,18 +49,16 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
     @Test
     public void checkSearchFilterResultTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         String query = "Ластик";
 
         homePage.focusOnInput();
         homePage.sendKeysToInput(query);
-        homePage.openResultPageBase();
+        ResultPageBase resultPage = homePage.openResultPageBase();
 
-        ResultPage resultPage = new ResultPage(getDriver());
-        resultPage.openFilterPage();
+        FilterPageBase filterPage = resultPage.openFilterPage();
 
-        FilterPage filterPage = new FilterPage(getDriver());
         filterPage.checkNewItemFilterBox();
         filterPage.clickFilterApplyButton();
 
@@ -70,14 +67,12 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
     @Test
     public void checkInvalidLoginDataTest() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
-        homePage.openLoginPage();
+        LoginPageBase loginPage = homePage.openLoginPage();
 
-        LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.openLoginWithEmailButton();
+        LoginWithEmailPageBase loginWithEmailPage = loginPage.openLoginWithEmailButton();
 
-        LoginWithEmailPage loginWithEmailPage = new LoginWithEmailPage(getDriver());
         loginWithEmailPage.fillEmailInput(R.TESTDATA.get("email"));
         loginWithEmailPage.fillPasswordInput(R.TESTDATA.get("pass"));
         loginWithEmailPage.clickSubmitDataButton();
