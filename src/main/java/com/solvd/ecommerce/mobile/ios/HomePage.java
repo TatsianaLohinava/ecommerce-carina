@@ -1,4 +1,4 @@
-package com.solvd.ecommerce.mobile.android;
+package com.solvd.ecommerce.mobile.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.ecommerce.mobile.common.*;
@@ -8,7 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
 
     @FindBy(xpath = ".//input[contains(@class, 'header__search-toggle')]")
@@ -38,7 +38,7 @@ public class HomePage extends HomePageBase {
 
     @Override
     public void focusOnInput() {
-        tap(searchBar);
+        searchBar.click();
     }
 
     @Override

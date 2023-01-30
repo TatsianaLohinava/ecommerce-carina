@@ -7,7 +7,7 @@ import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class EcommerceAndroidTest implements IAbstractTest {
+public class EcommerceMobileTest implements IAbstractTest {
 
     @Test
     public void verifySearchResultTest() {

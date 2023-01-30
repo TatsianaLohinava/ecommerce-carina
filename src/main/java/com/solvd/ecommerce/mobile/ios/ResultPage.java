@@ -1,4 +1,4 @@
-package com.solvd.ecommerce.mobile.android;
+package com.solvd.ecommerce.mobile.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.ecommerce.mobile.common.*;
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ResultPageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ResultPageBase.class)
 public class ResultPage extends ResultPageBase {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultPage.class);

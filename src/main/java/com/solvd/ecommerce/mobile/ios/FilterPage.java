@@ -1,4 +1,4 @@
-package com.solvd.ecommerce.mobile.android;
+package com.solvd.ecommerce.mobile.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.ecommerce.mobile.common.FilterPageBase;
@@ -7,7 +7,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = FilterPageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = FilterPageBase.class)
 public class FilterPage extends FilterPageBase {
 
     @FindBy(xpath = ".//*[contains(@class, 'filters__chkslist__item') and contains(@for, 'nw_1')]")
@@ -22,7 +22,7 @@ public class FilterPage extends FilterPageBase {
 
     @Override
     public void checkNewItemFilterBox() {
-        newItemsFilterButton.check();
+        newItemsFilterButton.click();
     }
 
     @Override
