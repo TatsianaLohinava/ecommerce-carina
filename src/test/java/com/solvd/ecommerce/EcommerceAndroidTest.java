@@ -3,6 +3,8 @@ package com.solvd.ecommerce;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 
 import com.solvd.ecommerce.mobile.common.*;
+import com.solvd.ecommerce.mobile.android.*;
+import com.solvd.ecommerce.utils.ContextView;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -21,6 +23,12 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
         Assert.assertNotEquals(resultPage.getResultListSize(), 0, "There are no query results on this page.");
         resultPage.printItemData();
+
+        resultPage.switchContext(ContextView.APP.getContextView());
+        AppPage appPage = new AppPage(getDriver());
+        appPage.switchTab();
+        appPage.closeTab();
+        Assert.assertFalse(appPage.isAppRunning(), "App was not closed.");
     }
 
     @Test
@@ -30,6 +38,14 @@ public class EcommerceAndroidTest implements IAbstractTest {
 
         homePage.clickMenuButton();
         Assert.assertTrue(homePage.isMenuVisible(), "Menu is not visible.");
+        homePage.clickDeliveryElement();
+        homePage.switchContext(ContextView.APP.getContextView());
+
+        AppPage appPage = new AppPage(getDriver());
+        appPage.openFirstTab();
+        appPage.switchContext(ContextView.WEB.getContextView());
+
+        Assert.assertTrue(homePage.checkPageUrl(), "The page url is different from the original.");
         homePage.clickCloseMenuButton();
         Assert.assertFalse(homePage.isMenuVisible(), "Menu is visible.");
     }
@@ -52,6 +68,11 @@ public class EcommerceAndroidTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         String query = "Ластик";
+
+        homePage.switchContext(ContextView.APP.getContextView());
+        AppPage appPage = new AppPage(getDriver());
+        appPage.closeControlPanel();
+        appPage.switchContext(ContextView.WEB.getContextView());
 
         homePage.focusOnInput();
         homePage.sendKeysToInput(query);

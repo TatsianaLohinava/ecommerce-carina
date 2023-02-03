@@ -23,6 +23,9 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = ".//*[@id='menu']")
     private ExtendedWebElement menuCard;
 
+    @FindBy(xpath = ".//*[contains(@class, 'nav__item') and contains(@href, '/help/assistant') and contains(@href, 'supply')]")
+    private ExtendedWebElement menuDeliveryElement;
+
     @FindBy(xpath = ".//*[contains(@class, 'btn-close')]")
     private ExtendedWebElement closeMenuButton;
 
@@ -34,6 +37,11 @@ public class HomePage extends HomePageBase {
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void clickDeliveryElement() {
+        menuDeliveryElement.click();
     }
 
     @Override
@@ -83,6 +91,11 @@ public class HomePage extends HomePageBase {
     public LoginPageBase openLoginPage() {
         loginButton.click();
         return initPage(getDriver(), LoginPageBase.class);
+    }
+
+    @Override
+    public boolean checkPageUrl() {
+        return this.isUrlAsExpected("https://oz.by/");
     }
 
 }
