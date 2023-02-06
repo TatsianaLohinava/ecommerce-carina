@@ -1,16 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Automation" parallel="tests" thread-count="6" data-provider-thread-count="6">
-    <test name="EcommerceTests on Chrome" parallel="methods" thread-count="6">
+<suite name="Automation">
+    <test name="EcommerceTests on Chrome" >
         <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
     </test>
-    <test name="EcommerceTests on FireFox" parallel="methods" thread-count="6">
-        <parameter name="browser" value="firefox" />
-        <classes>
-            <class name="com.solvd.ecommerce.EcommerceWebTest" />
-        </classes>
-    </test>
+<!--    <test name="EcommerceTests on FireFox" parallel="methods" thread-count="6">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--        <classes>-->
+<!--            <class name="com.solvd.ecommerce.EcommerceWebTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
