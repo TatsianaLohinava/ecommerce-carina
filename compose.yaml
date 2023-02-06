@@ -4,8 +4,7 @@ services:
     container_name: selenoid
     ports:
       - "4444:4444"
-    networks:
-      - selenoid
+    network_mode: bridge
     volumes:
       - ".:/etc/selenoid"
       - "./target:/output"
@@ -13,41 +12,34 @@ services:
       - "./target:/opt/selenoid/video"
     environment:
       - "OVERRIDE_VIDEO_OUTPUT_DIR=/Users/solvd/Downloads/vid"
-    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video", "-container-network", "selenoid"]
+    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video"]
   selenoid-ui:
     image: "aerokube/selenoid-ui:latest"
     container_name: selenoid-ui
+    network_mode: bridge
     links:
       - selenoid
     ports:
       - "8080:8080"
-    networks:
-      - selenoid
     command: ["--selenoid-uri", "http://selenoid:4444"]
   chrome_100.0:
     image: "sskorol/selenoid_chromium_vnc:100.0"
     container_name: chrome_100.0
+    network_mode: bridge
     links:
       - selenoid
       - selenoid-ui
-    depends_on:
-      - selenoid
-      - selenoid-ui
-    networks:
-      - selenoid
     volumes:
       - "/dev/shm:/dev/shm"
-  video:
-    image: selenoid/video-recorder:latest-release
+  firefox:
+    image: "selenoid/firefox:109.0"
+    network_mode: bridge
     links:
       - selenoid
       - selenoid-ui
-    depends_on:
+  video:
+    image: selenoid/video-recorder:latest-release
+    network_mode: bridge
+    links:
       - selenoid
       - selenoid-ui
-    networks:
-      - selenoid
-networks:
-  selenoid:
-    external:
-      name: selenoid
