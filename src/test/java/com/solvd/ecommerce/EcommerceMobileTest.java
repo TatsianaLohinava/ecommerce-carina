@@ -3,6 +3,8 @@ package com.solvd.ecommerce;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 
 import com.solvd.ecommerce.mobile.common.*;
+import com.solvd.ecommerce.mobile.ios.AppPage;
+import com.solvd.ecommerce.utils.ContextView;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -21,6 +23,12 @@ public class EcommerceMobileTest implements IAbstractTest {
 
         Assert.assertNotEquals(resultPage.getResultListSize(), 0, "There are no query results on this page.");
         resultPage.printItemData();
+
+        resultPage.switchContext(ContextView.APP.getContextView());
+        AppPage appPage = new AppPage(getDriver());
+        appPage.switchTab();
+        appPage.closeTab();
+        Assert.assertFalse(appPage.getCurrentUrl().contains("https://oz.by/"), "Page was not closed.");
     }
 
     @Test
@@ -30,6 +38,16 @@ public class EcommerceMobileTest implements IAbstractTest {
 
         homePage.clickMenuButton();
         Assert.assertTrue(homePage.isMenuVisible(), "Menu is not visible.");
+        if (homePage.getContext().equals(ContextView.WEB.getContextView())) {
+            homePage.clickDeliveryElement();
+            homePage.switchContext(ContextView.APP.getContextView());
+
+            AppPage appPage = new AppPage(getDriver());
+            appPage.openFirstTab();
+            appPage.switchContext(ContextView.WEB.getContextView());
+
+            Assert.assertTrue(homePage.checkPageUrl(), "The page url is different from the original.");
+        }
         homePage.clickCloseMenuButton();
         Assert.assertFalse(homePage.isMenuVisible(), "Menu is visible.");
     }
@@ -52,7 +70,12 @@ public class EcommerceMobileTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         String query = "Ластик";
-
+        if (homePage.getContext().equals(ContextView.WEB.getContextView())) {
+            homePage.switchContext(ContextView.APP.getContextView());
+            AppPage appPage = new AppPage(getDriver());
+            appPage.closeControlPanel();
+            appPage.switchContext(ContextView.WEB.getContextView());
+        }
         homePage.focusOnInput();
         homePage.sendKeysToInput(query);
         ResultPageBase resultPage = homePage.openResultPageBase();

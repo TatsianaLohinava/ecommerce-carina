@@ -26,4 +26,8 @@ public abstract class HomePageBase extends BasePage {
 
     public abstract void focusOnInput();
 
+    public abstract void clickDeliveryElement();
+
+    public abstract boolean checkPageUrl();
+
 }
