@@ -19,9 +19,10 @@ services:
     network_mode: bridge
     links:
       - selenoid
+      - ggr-ui
     ports:
       - "8080:8080"
-    command: ["--selenoid-uri", "http://selenoid:4444"]
+    command: ["--selenoid-uri", "http://ggr-ui:8888"]
   chrome_100.0:
     image: "sskorol/selenoid_chromium_vnc:100.0"
     container_name: chrome_100.0
@@ -43,3 +44,21 @@ services:
     links:
       - selenoid
       - selenoid-ui
+  ggr:
+    image: aerokube/ggr:latest-release
+    container_name: ggr
+    network_mode: bridge
+    ports:
+      - 4445:4444
+    links:
+      - selenoid
+    volumes:
+      - ./grid-router:/etc/grid-router:ro
+  ggr-ui:
+    image: aerokube/ggr-ui:latest-release
+    container_name: ggr-ui
+    network_mode: bridge
+    volumes:
+      - ./grid-router/quota:/etc/grid-router/quota:ro
+    ports:
+      - 8888:8888
