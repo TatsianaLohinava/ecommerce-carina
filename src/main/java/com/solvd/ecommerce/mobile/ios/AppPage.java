@@ -3,11 +3,13 @@ package com.solvd.ecommerce.mobile.ios;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.solvd.ecommerce.mobile.common.AppPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = AppPageBase.class)
 public class AppPage extends AppPageBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeButton[`label == 'Tabs'`]")

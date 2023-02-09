@@ -3,7 +3,6 @@ package com.solvd.ecommerce;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 
 import com.solvd.ecommerce.mobile.common.*;
-import com.solvd.ecommerce.mobile.ios.AppPage;
 import com.solvd.ecommerce.utils.ContextView;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
@@ -25,7 +24,7 @@ public class EcommerceMobileTest implements IAbstractTest {
         resultPage.printItemData();
 
         resultPage.switchContext(ContextView.APP.getContextView());
-        AppPage appPage = new AppPage(getDriver());
+        AppPageBase appPage = initPage(getDriver(), AppPageBase.class);
         appPage.switchTab();
         appPage.closeTab();
         Assert.assertFalse(appPage.getCurrentUrl().contains("https://oz.by/"), "Page was not closed.");
@@ -42,9 +41,9 @@ public class EcommerceMobileTest implements IAbstractTest {
             homePage.clickDeliveryElement();
             homePage.switchContext(ContextView.APP.getContextView());
 
-            AppPage appPage = new AppPage(getDriver());
+            AppPageBase appPage = initPage(getDriver(), AppPageBase.class);
             appPage.openFirstTab();
-            appPage.switchContext(ContextView.WEB.getContextView());
+            homePage.switchContext(ContextView.WEB.getContextView());
 
             Assert.assertTrue(homePage.checkPageUrl(), "The page url is different from the original.");
         }
@@ -72,9 +71,9 @@ public class EcommerceMobileTest implements IAbstractTest {
         String query = "Ластик";
         if (homePage.getContext().equals(ContextView.WEB.getContextView())) {
             homePage.switchContext(ContextView.APP.getContextView());
-            AppPage appPage = new AppPage(getDriver());
+            AppPageBase appPage = initPage(getDriver(), AppPageBase.class);
             appPage.closeControlPanel();
-            appPage.switchContext(ContextView.WEB.getContextView());
+            homePage.switchContext(ContextView.WEB.getContextView());
         }
         homePage.focusOnInput();
         homePage.sendKeysToInput(query);
