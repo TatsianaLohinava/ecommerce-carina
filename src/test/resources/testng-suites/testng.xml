@@ -3,12 +3,26 @@
 <suite name="Automation" parallel="tests" thread-count="6" data-provider-thread-count="6">
     <test name="EcommerceTests on Chrome" parallel="methods" thread-count="6">
         <parameter name="browser" value="chrome" />
+
+        <parameter name="suiteOwner" value="qpsdemo"/>
+        <parameter name="jenkinsJobName" value="web-tests"/>
+        <parameter name="jenkinsJobType" value="testng"/>
+        <parameter name="jenkinsEmail" value="test@qaprosoft.com"/>
+        <parameter name="jenkinsEnvironments" value="DEMO"/>
+
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
     </test>
     <test name="EcommerceTests on FireFox" parallel="methods" thread-count="6">
         <parameter name="browser" value="firefox" />
+
+        <parameter name="suiteOwner" value="qpsdemo"/>
+        <parameter name="jenkinsJobName" value="web-tests"/>
+        <parameter name="jenkinsJobType" value="testng"/>
+        <parameter name="jenkinsEmail" value="test@qaprosoft.com"/>
+        <parameter name="jenkinsEnvironments" value="DEMO"/>
+
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
