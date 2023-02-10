@@ -2,11 +2,13 @@ package com.solvd.ecommerce.mobile.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.ecommerce.mobile.common.AppPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = AppPageBase.class)
 public class AppPage extends AppPageBase {
 
     @FindBy(id = "tab_switcher_button")

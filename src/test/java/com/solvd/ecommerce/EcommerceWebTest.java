@@ -1,10 +1,10 @@
 package com.solvd.ecommerce;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.solvd.ecommerce.utils.CapabilitiesFactory;
 import com.solvd.ecommerce.web.component.*;
 import com.solvd.ecommerce.web.page.HomePage;
 import com.solvd.ecommerce.web.page.ResultPage;
-import com.solvd.ecommerce.web.utils.CapabilitiesFactory;
 
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
