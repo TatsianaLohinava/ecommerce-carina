@@ -6,6 +6,8 @@ import com.solvd.ecommerce.web.page.HomePage;
 import com.solvd.ecommerce.web.page.ResultPage;
 import com.solvd.ecommerce.web.utils.CapabilitiesFactory;
 
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
+import com.zebrunner.agent.core.registrar.TestRail;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -15,7 +17,12 @@ import java.util.List;
 
 public class EcommerceWebTest implements IAbstractTest {
 
-    @Test
+    @BeforeSuite
+    public void setUp() {
+        TestRail.setSuiteId("S181");
+    }
+
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void verifySearchResultTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -31,6 +38,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3500")
     @Parameters({"browser"})
     public void checkBackgroundChangeTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -44,6 +52,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3501")
     @Parameters({"browser"})
     public void checkPinButtonTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -55,6 +64,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3502")
     @Parameters({"browser"})
     public void checkInputResetTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -69,6 +79,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3503")
     @Parameters({"browser"})
     public void checkSearchFilterResultTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -93,6 +104,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
+    @TestRailCaseId("C3504")
     @Parameters({"browser"})
     public void checkInvalidLoginDataTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
