@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Automation" parallel="tests" thread-count="5" data-provider-thread-count="5">
+<suite name="Automation" >
 
     <parameter name="suiteOwner" value="qpsdemo"/>
     <parameter name="provider" value="mcloud"/>
@@ -16,7 +16,7 @@
     <parameter name="jenkinsJobExecutionMode" value="continue"/>
     <parameter name="jenkinsAutoScreenshot" value="true"/>
 
-    <test name="EcommerceTests on FireFox" parallel="methods" thread-count="6">
+    <test name="EcommerceTests on FireFox" parallel="methods" thread-count="5">
         <classes>
             <class name="com.solvd.ecommerce.EcommerceAndroidTest"/>
         </classes>
