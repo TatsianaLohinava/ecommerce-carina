@@ -19,7 +19,7 @@ public class EcommerceWebTest implements IAbstractTest {
 
     @BeforeSuite
     public void setUp() {
-        TestRail.setSuiteId("S181");
+        TestRail.setSuiteId("S182");
     }
 
     @Test(enabled = false)
@@ -38,7 +38,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("C3500")
+    @TestRailCaseId("C3506")
     @Parameters({"browser"})
     public void checkBackgroundChangeTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -52,7 +52,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("C3501")
+    @TestRailCaseId("C3507")
     @Parameters({"browser"})
     public void checkPinButtonTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -64,7 +64,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("C3502")
+    @TestRailCaseId("C3508")
     @Parameters({"browser"})
     public void checkInputResetTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -79,7 +79,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("C3503")
+    @TestRailCaseId("C3509")
     @Parameters({"browser"})
     public void checkSearchFilterResultTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -104,7 +104,7 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @TestRailCaseId("C3504")
+    @TestRailCaseId("C3510")
     @Parameters({"browser"})
     public void checkInvalidLoginDataTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
