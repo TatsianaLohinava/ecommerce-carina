@@ -19,7 +19,6 @@ services:
     network_mode: bridge
     links:
       - selenoid
-      - selenoid-ui
     volumes:
       - "/dev/shm:/dev/shm"
   firefox:
