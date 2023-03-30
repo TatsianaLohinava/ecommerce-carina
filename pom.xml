@@ -13,12 +13,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<carina-core_version>8.0.5</carina-core_version>
-		<carina-aws-s3.version>1.0.0</carina-aws-s3.version>
+		<carina-core_version>8.0.7</carina-core_version>
+		<carina-aws-s3.version>1.0.1</carina-aws-s3.version>
 		<slf4j-version>2.0.5</slf4j-version>
-		<log4j-version>2.17.1</log4j-version>
+		<log4j-version>2.20.0</log4j-version>
 		<java.version>11</java.version>
-<!--		<zebrunner-agent.version>1.9.2</zebrunner-agent.version>-->
+		<zebrunner-agent.version>1.9.2</zebrunner-agent.version>
 		<suite>testng</suite>
 	</properties>
 
@@ -28,11 +28,11 @@
 			<artifactId>carina-core</artifactId>
 			<version>${carina-core_version}</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.zebrunner</groupId>-->
-<!--			<artifactId>carina-aws-s3</artifactId>-->
-<!--			<version>${carina-aws-s3.version}</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.zebrunner</groupId>
+			<artifactId>carina-aws-s3</artifactId>
+			<version>${carina-aws-s3.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -55,23 +55,23 @@
 			<version>${log4j-version}</version>
 		</dependency>
 
-<!--		<dependency>-->
+		<dependency>
 			<!--we need it to reuse benefits of zebrunner testng agent for webdriver
 				sesssion(s) declaration -->
-<!--			<groupId>net.bytebuddy</groupId>-->
-<!--			<artifactId>byte-buddy</artifactId>-->
-<!--			<version>1.12.10</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.mybatis</groupId>-->
-<!--			<artifactId>mybatis</artifactId>-->
-<!--			<version>3.5.6</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.postgresql</groupId>-->
-<!--			<artifactId>postgresql</artifactId>-->
-<!--			<version>42.3.3</version>-->
-<!--		</dependency>-->
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+			<version>1.14.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -101,15 +101,15 @@
 					</execution>
 				</executions>
 				<configuration>
-<!--					<artifactItems>-->
-<!--						<artifactItem>-->
-<!--							<groupId>com.zebrunner</groupId>-->
-<!--							<artifactId>agent-core</artifactId>-->
-<!--							<version>${zebrunner-agent.version}</version>-->
-<!--							<outputDirectory>${project.build.directory}/agent</outputDirectory>-->
-<!--							<destFileName>zebrunner-agent.jar</destFileName>-->
-<!--						</artifactItem>-->
-<!--					</artifactItems>-->
+					<artifactItems>
+						<artifactItem>
+							<groupId>com.zebrunner</groupId>
+							<artifactId>agent-core</artifactId>
+							<version>${zebrunner-agent.version}</version>
+							<outputDirectory>${project.build.directory}/agent</outputDirectory>
+							<destFileName>zebrunner-agent.jar</destFileName>
+						</artifactItem>
+					</artifactItems>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -117,7 +117,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M6</version>
 				<configuration>
-<!--					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>-->
+					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<suiteXmlFiles>
 						<suiteXmlFile>${project.build.directory}/test-classes/testng-suites/${suite}.xml</suiteXmlFile>
