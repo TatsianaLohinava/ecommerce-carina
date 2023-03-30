@@ -9,27 +9,13 @@ services:
       - ".:/etc/selenoid"
       - "./target:/output"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./target:/opt/selenoid/video"
-    environment:
-      - "OVERRIDE_VIDEO_OUTPUT_DIR=/Users/solvd/Downloads/vid"
-    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video"]
-  selenoid-ui:
-    image: "aerokube/selenoid-ui:latest"
-    container_name: selenoid-ui
-    network_mode: bridge
-    links:
-      - selenoid
-      - ggr-ui
-    ports:
-      - "8081:8080"
-    command: ["--selenoid-uri", "http://ggr-ui:8888"]
+    command: ["-conf", "/etc/selenoid/browsers.json"]
   chrome_100.0:
     image: "sskorol/selenoid_chromium_vnc:100.0"
     container_name: chrome_100.0
     network_mode: bridge
     links:
       - selenoid
-      - selenoid-ui
     volumes:
       - "/dev/shm:/dev/shm"
   firefox:
@@ -37,13 +23,6 @@ services:
     network_mode: bridge
     links:
       - selenoid
-      - selenoid-ui
-  video:
-    image: selenoid/video-recorder:latest-release
-    network_mode: bridge
-    links:
-      - selenoid
-      - selenoid-ui
   ggr:
     image: aerokube/ggr:latest-release
     container_name: ggr
@@ -54,11 +33,3 @@ services:
       - selenoid
     volumes:
       - ./grid-router:/etc/grid-router:ro
-  ggr-ui:
-    image: aerokube/ggr-ui:latest-release
-    container_name: ggr-ui
-    network_mode: bridge
-    volumes:
-      - ./grid-router/quota:/etc/grid-router/quota:ro
-    ports:
-      - 8888:8888
