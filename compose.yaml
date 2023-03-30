@@ -9,7 +9,10 @@ services:
       - ".:/etc/selenoid"
       - "./target:/output"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    command: ["-conf", "/etc/selenoid/browsers.json"]
+      - "./target:/opt/selenoid/video"
+    environment:
+      - "OVERRIDE_VIDEO_OUTPUT_DIR=/Users/solvd/Downloads/vid"
+    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video"]
   chrome_100.0:
     image: "sskorol/selenoid_chromium_vnc:100.0"
     container_name: chrome_100.0
@@ -20,6 +23,11 @@ services:
       - "/dev/shm:/dev/shm"
   firefox:
     image: "selenoid/firefox:109.0"
+    network_mode: bridge
+    links:
+      - selenoid
+  video:
+    image: selenoid/video-recorder:latest-release
     network_mode: bridge
     links:
       - selenoid
