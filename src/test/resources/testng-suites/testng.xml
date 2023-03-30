@@ -9,7 +9,7 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
     <parameter name="jenkinsRegressionPipeline" value="Carina-Demo-Regression-Pipeline"/>
-    <parameter name="jenkinsRegressionMatrix" value="env: DEMO, browserName: chrome; env:PROD, browserName: firefox"/>
+    <parameter name="jenkinsRegressionMatrix" value="browserName: chrome, browserVersion: 100; browserName: firefox, browserVersion: 109"/>
 
     <test name="EcommerceTests" >
         <classes>
