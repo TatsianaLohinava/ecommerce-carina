@@ -21,7 +21,7 @@ services:
       - selenoid
       - ggr-ui
     ports:
-      - "8080:8080"
+      - "8081:8080"
     command: ["--selenoid-uri", "http://ggr-ui:8888"]
   chrome_100.0:
     image: "sskorol/selenoid_chromium_vnc:100.0"
