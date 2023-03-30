@@ -9,9 +9,17 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
     <parameter name="jenkinsRegressionPipeline" value="Carina-Demo-Regression-Pipeline"/>
-    <parameter name="jenkinsRegressionMatrix" value="browserName: chrome, browserVersion: 100; browserName: firefox, browserVersion: 109"/>
+    <parameter name="jenkinsRegressionMatrix" value="browser: chrome; browser: firefox"/>
 
-    <test name="EcommerceTests" >
+    <test name="EcommerceTests on Chrome" thread-count="1">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="com.solvd.ecommerce.EcommerceWebTest" />
+        </classes>
+    </test>
+
+    <test name="EcommerceTests on Firefox"  thread-count="1">
+        <parameter name="browser" value="firefox" />
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
