@@ -8,10 +8,10 @@
     <parameter name="jenkinsEmail" value="test@qaprosoft.com"/>
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
-    <parameter name="jenkinsRegressionPipeline" value="nightly_regression, full_regression"/>
+    <parameter name="jenkinsRegressionPipeline" value="Carina-Demo-Regression-Pipeline"/>
+    <parameter name="jenkinsRegressionMatrix" value="env: DEMO, browser: chrome; env:PROD, browser: firefox"/>
 
     <test name="EcommerceTests on Chrome" >
-        <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
