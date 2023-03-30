@@ -3,7 +3,6 @@ package com.solvd.ecommerce;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.ecommerce.web.component.*;
 import com.solvd.ecommerce.web.page.*;
-import com.solvd.ecommerce.web.utils.CapabilitiesFactory;
 import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -14,9 +13,8 @@ import java.util.List;
 public class EcommerceWebTest implements IAbstractTest {
 
     @Test(enabled = false)
-    @Parameters({"browser"})
-    public void verifySearchResultTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void verifySearchResultTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         String query = "Ластик";
 
@@ -29,9 +27,8 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test(enabled = false)
-    @Parameters({"browser"})
-    public void checkBackgroundChangeTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void checkBackgroundChangeTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         SoftAssert softAssert = new SoftAssert();
         List<String> attributeList = homePage.getSideBarMenuElementAttributeOnHover();
@@ -42,9 +39,8 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test(enabled = false)
-    @Parameters({"browser"})
-    public void checkPinButtonTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void checkPinButtonTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
 
         SoftAssert softAssert = new SoftAssert();
@@ -53,9 +49,8 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test
-    @Parameters({"browser"})
-    public void checkInputResetTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void checkInputResetTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         String query = "Ластик";
 
@@ -67,9 +62,8 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test(enabled = false)
-    @Parameters({"browser"})
-    public void checkSearchFilterResultTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void checkSearchFilterResultTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         String query = "Ластик";
 
@@ -91,9 +85,8 @@ public class EcommerceWebTest implements IAbstractTest {
     }
 
     @Test(enabled = false)
-    @Parameters({"browser"})
-    public void checkInvalidLoginDataTest(String browser) {
-        HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
+    public void checkInvalidLoginDataTest() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Header header = homePage.getHeader();
         LoginBox loginBox = homePage.getLoginBox();
