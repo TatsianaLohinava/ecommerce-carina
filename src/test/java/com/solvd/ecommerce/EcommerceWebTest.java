@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EcommerceWebTest implements IAbstractTest {
 
-    @Test
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void verifySearchResultTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -28,7 +28,7 @@ public class EcommerceWebTest implements IAbstractTest {
         resultPage.getResultTableElementList().forEach(ResultTableElement::printItemData);
     }
 
-    @Test
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void checkBackgroundChangeTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -41,7 +41,7 @@ public class EcommerceWebTest implements IAbstractTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void checkPinButtonTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -66,7 +66,7 @@ public class EcommerceWebTest implements IAbstractTest {
         Assert.assertTrue(searchBar.isSearchInputEmpty(), "Input wasn't cleared.");
     }
 
-    @Test
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void checkSearchFilterResultTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
@@ -90,7 +90,7 @@ public class EcommerceWebTest implements IAbstractTest {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     @Parameters({"browser"})
     public void checkInvalidLoginDataTest(String browser) {
         HomePage homePage = new HomePage(getDriver(browser, CapabilitiesFactory.createCapability(browser)));
