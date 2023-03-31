@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Automation" parallel="methods" >
+<suite name="Automation" >
 
     <parameter name="suiteOwner" value="qpsdemo"/>
     <parameter name="jenkinsJobName" value="webtests"/>
@@ -9,10 +9,9 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
     <parameter name="jenkinsRegressionPipeline" value="Carina-Demo-Regression-Pipeline"/>
-    <parameter name="jenkinsRegressionMatrix" value="browser=chrome; browser=firefox"/>
+    <parameter name="jenkinsRegressionMatrix" value="browser:chrome; browser:firefox"/>
 
-    <test name="EcommerceTests on Chrome" thread-count="2">
-        <parameter name="browser" value="chrome" />
+    <test name="EcommerceTests" >
         <classes>
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
