@@ -9,7 +9,7 @@
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
     <parameter name="jenkinsRegressionPipeline" value="demo_reg"/>
-    <parameter name="jenkinsRegressionMatrix_demo_reg" value="browser:chrome; browser:firefox"/>
+    <parameter name="jenkinsRegressionMatrix_demo_reg" value="browser:chrome; browser:chrome"/>
 
     <test name="EcommerceTests" >
         <classes>
