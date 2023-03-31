@@ -8,8 +8,8 @@
     <parameter name="jenkinsEmail" value="test@qaprosoft.com"/>
     <parameter name="jenkinsEnvironments" value="DEMO"/>
 
-    <parameter name="jenkinsRegressionPipeline" value="Carina-Ecom-Regression-Pipeline"/>
-    <parameter name="jenkinsRegressionMatrix" value="env: DEMO, branch: jenkins; env:PROD, branch: jenkins-scm"/>
+    <parameter name="jenkinsRegressionPipeline" value="demo_reg"/>
+    <parameter name="jenkinsRegressionMatrix_demo_reg" value="browser:chrome; browser:firefox"/>
 
     <test name="EcommerceTests" >
         <classes>
