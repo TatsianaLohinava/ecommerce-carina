@@ -15,11 +15,6 @@
                 "image": "selenoid/firefox:108.0",
                 "port": "4444",
                 "path": "/wd/hub"
-            },
-            "109.0": {
-                "image": "selenoid/firefox:109.0",
-                "port": "4444",
-                "path": "/wd/hub"
             }
         }
     }
