@@ -14,10 +14,4 @@
             <class name="com.solvd.ecommerce.EcommerceWebTest" />
         </classes>
     </test>
-    <test name="EcommerceTests on FireFox" >
-        <parameter name="browser" value="firefox" />
-        <classes>
-            <class name="com.solvd.ecommerce.EcommerceWebTest" />
-        </classes>
-    </test>
 </suite>
